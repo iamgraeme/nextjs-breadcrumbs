@@ -45,7 +45,7 @@ const convertBreadcrumb = (
     }
   }
 
-  // decode for utf-8 characters and return ascii. 
+  // decode for utf-8 characters and return ascii.
   return toUpperCase ? decodeURI(transformedTitle).toUpperCase() : decodeURI(transformedTitle);
 };
 
@@ -70,6 +70,8 @@ export interface BreadcrumbsProps {
    * Make sure to import the CSS in _app.js
    * Example: true Default: false */
   useDefaultStyle?: boolean;
+
+  category?: string | null;
 
   /** The title for the very first breadcrumb pointing to the root directory. Example: '/' Default: 'HOME' */
   rootLabel?: string | null;
@@ -125,6 +127,7 @@ const defaultProps: BreadcrumbsProps = {
   containerStyle: null,
   containerClassName: '',
   listStyle: null,
+  category: null,
   listClassName: '',
   inactiveItemStyle: null,
   inactiveItemClassName: '',
@@ -146,6 +149,7 @@ const defaultProps: BreadcrumbsProps = {
  * @returns The breadcrumb React component.
  */
 const Breadcrumbs = ({
+  category,
   useDefaultStyle,
   rootLabel,
   omitRootLabel,
@@ -209,6 +213,15 @@ const Breadcrumbs = ({
                 )}
               </a>
             </Link>
+          </li>
+        )}
+        {category && (
+          <li>
+            <Link>
+              <a>
+                {category}
+                </a>
+              </Link>
           </li>
         )}
         {breadcrumbs.length >= 1 &&

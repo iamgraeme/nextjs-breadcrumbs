@@ -1,10 +1,13 @@
 {
-  "name": "nextjs-breadcrumbs",
+  "name": "iamgraeme-breadcrumbs",
   "version": "1.1.9",
   "description": "A dynamic, highly customizable breadcrumbs component for Next.js",
   "author": "NiklasMencke",
   "license": "MIT",
-  "repository": "NiklasMencke/nextjs-breadcrumbs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiklasMencke/nextjs-breadcrumbs.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -73,5 +76,13 @@
   ],
   "prettier": {
     "singleQuote": true
+  },
+  "bugs": {
+    "url": "https://github.com/NiklasMencke/nextjs-breadcrumbs/issues"
+  },
+  "homepage": "https://github.com/NiklasMencke/nextjs-breadcrumbs#readme",
+  "directories": {
+    "doc": "docs",
+    "example": "example"
   }
 }
