@@ -225,10 +225,14 @@ const Breadcrumbs = ({
             </Link>
           </li>
         )}
-        {category && <li>{category}</li>}
+        {category && (
+          <li>
+            <a>{category}</a>
+          </li>
+        )}
         {breadcrumbs.length >= 1 &&
           breadcrumbs.map((breadcrumb, i) => {
-            moveInArray(breadcrumbs, 2, 1);
+            // moveInArray(breadcrumbs, 2, 1);
             if (
               !breadcrumb ||
               breadcrumb.breadcrumb.length === 0 ||
