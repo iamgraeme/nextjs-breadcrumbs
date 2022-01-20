@@ -189,9 +189,9 @@ const Breadcrumbs = ({
     }
   }, [router]);
 
-  const moveInArray = function (arr, from, to) {
+  const moveInArray = function (arr: any, from: number, to: number) {
     // Delete the item from it's current position
-    var item = arr.splice(from, 1);
+    const item = arr.splice(from, 1);
 
     // Move the item to its new position
     arr.splice(to, 0, item[0]);
