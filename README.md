@@ -1,20 +1,20 @@
-# nextjs-breadcrumbs
+# iamgraeme-breadcrumbs
 
 > A dynamic, highly customizable breadcrumbs component for Next.js
 
-[![NPM](https://img.shields.io/npm/v/nextjs-breadcrumbs.svg)](https://www.npmjs.com/package/nextjs-breadcrumbs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/iamgraeme-breadcrumbs.svg)](https://www.npmjs.com/package/iamgraeme-breadcrumbs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Installation
 
 ```bash
-yarn add nextjs-breadcrumbs
+yarn add iamgraeme-breadcrumbs
 ```
 
 ## Prerequisites
 
 This component is highly customizable. You can provide your own CSS via classes or via inline styles.
 If you want to use the default styling however, you need to make sure to import the CSS file provided by this package.
-Inside your `_app.js` paste `import 'nextjs-breadcrumbs/dist/index.css';` at the top. This is not needed, if you just want to use your custom styles.
+Inside your `_app.js` paste `import 'iamgraeme-breadcrumbs/dist/index.css';` at the top. This is not needed, if you just want to use your custom styles.
 
 ## Usage
 
@@ -23,7 +23,7 @@ It will always display a dynamic Breadcrumb navigation, based on the current pat
 
 ```tsx
 import React from 'react';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
 
 const Example = () => {
   return <Breadcrumbs useDefaultStyle rootLabel="Home" />;
@@ -36,7 +36,7 @@ By default the breadcrumb labels are generated through the url path. In many cas
 
 ```tsx
 import React from 'react';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
 
 // Before: title.to.be.transformed  After: title to be transformed
 const Example = () => {
@@ -55,7 +55,7 @@ It's possible to pass a label transformation function to customize the labels.
 
 ```tsx
 import React from 'react';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
 
 const Example = () => {
   return (
@@ -67,13 +67,26 @@ const Example = () => {
 };
 ```
 
+## Add category
+
+It's possible to pass a label transformation function to customize the labels.
+
+```tsx
+import React from 'react';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
+
+const Example = () => {
+  return <Breadcrumbs category={category} />;
+};
+```
+
 ## Omit the root / home label
 
 It's possible to omit the root level entirely. This makes sense if you have an URL like https://website.com/home. If you wouldn't omit the root label in this case, the Breadcrumbs would show something like `/home/home`.
 
 ```tsx
 import React from 'react';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
 
 const Example = () => {
   return <Breadcrumbs omitRootLabel />;
@@ -86,7 +99,7 @@ It's possible to pass an array containing all the indexes of the path that shoul
 
 ```tsx
 import React from 'react';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import Breadcrumbs from 'iamgraeme-breadcrumbs';
 
 // path: /nested/this-is-ommited will omit the this-is-ommited breadcrumb
 const Example = () => {
@@ -98,25 +111,25 @@ const Example = () => {
 
 It's possible, to style each HTML element of this component separetely. This can be done either via inline styles or by assigning your own classes.
 
-
 ## Overview of props
-| Prop name  | Description | Data type | Example | Default |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| useDefaultStyle  | If true, the default styles are used. Make sure to import the CSS in _app.js. | boolean  | true  | false  |
-| rootLabel  | The title for the very first breadcrumb pointing to the root directory.  | string  | '/'  | 'HOME'  |
-| omitRootLabel  | Boolean indicator whether the root label should be omitted. | boolean  | true  | false  |
-| labelsToUppercase  | Boolean indicator if the labels should be displayed as uppercase.  | boolean  | true  | false  |
-| replaceCharacterList  | Array containing a list of specific characters that should be replaced in the label. This can be useful to convert special characters such as vowels.  | Array<CharacterMap>  | [{ from: 'ae', to: 'ä' }, { from: '-', to: ' '}]  | [{ from: '-', to: ' ' }]  |
-| transformLabel  | A transformation function that allows to customize the label strings. Receives the label string and has to return a string or React Component.  | React.ReactNode  | (title) => 'Transformed ' + title | null  |
-| omitIndexList  | Array containing all the indexes of the path that should be omitted and not be rendered as labels. If we have a path like '/home/category/1' then you might want to pass '[2]' here, which omits the breadcrumb label '1'. Indexes start with 0.  | Array<number>  | [1]  | null  |
-| containerStyle  | An inline style object for the outer container  | Object  |   | null  |
-| containerClassName  | Classes to be used for the outer container. Won't be used if useDefaultStyle is true  | string  |   | null  |
-| listStyle  | An inline style object for the breadcrumb list  | Object  |   | null  |
-| listClassName  | Classes to be used for the breadcrumb list  | string  |   | null  |
-| inactiveItemStyle  | An inline style object for the inactive breadcrumb list item  | Object  |  | null  |
-| inactiveItemClassName  | Classes to be used for the inactive breadcrumb list item  | string  |   | null  |
-| activeItemStyle  | An inline style object for the active breadcrumb list item  | Object  |   | null  |
-| activeItemClassName  | Classes to be used for the active breadcrumb list item  | string  |   | null  |
+
+| Prop name             | Description                                                                                                                                                                                                                                      | Data type           | Example                                          | Default                  |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ------------------------------------------------ | ------------------------ |
+| useDefaultStyle       | If true, the default styles are used. Make sure to import the CSS in \_app.js.                                                                                                                                                                   | boolean             | true                                             | false                    |
+| rootLabel             | The title for the very first breadcrumb pointing to the root directory.                                                                                                                                                                          | string              | '/'                                              | 'HOME'                   |
+| omitRootLabel         | Boolean indicator whether the root label should be omitted.                                                                                                                                                                                      | boolean             | true                                             | false                    |
+| labelsToUppercase     | Boolean indicator if the labels should be displayed as uppercase.                                                                                                                                                                                | boolean             | true                                             | false                    |
+| replaceCharacterList  | Array containing a list of specific characters that should be replaced in the label. This can be useful to convert special characters such as vowels.                                                                                            | Array<CharacterMap> | [{ from: 'ae', to: 'ä' }, { from: '-', to: ' '}] | [{ from: '-', to: ' ' }] |
+| transformLabel        | A transformation function that allows to customize the label strings. Receives the label string and has to return a string or React Component.                                                                                                   | React.ReactNode     | (title) => 'Transformed ' + title                | null                     |
+| omitIndexList         | Array containing all the indexes of the path that should be omitted and not be rendered as labels. If we have a path like '/home/category/1' then you might want to pass '[2]' here, which omits the breadcrumb label '1'. Indexes start with 0. | Array<number>       | [1]                                              | null                     |
+| containerStyle        | An inline style object for the outer container                                                                                                                                                                                                   | Object              |                                                  | null                     |
+| containerClassName    | Classes to be used for the outer container. Won't be used if useDefaultStyle is true                                                                                                                                                             | string              |                                                  | null                     |
+| listStyle             | An inline style object for the breadcrumb list                                                                                                                                                                                                   | Object              |                                                  | null                     |
+| listClassName         | Classes to be used for the breadcrumb list                                                                                                                                                                                                       | string              |                                                  | null                     |
+| inactiveItemStyle     | An inline style object for the inactive breadcrumb list item                                                                                                                                                                                     | Object              |                                                  | null                     |
+| inactiveItemClassName | Classes to be used for the inactive breadcrumb list item                                                                                                                                                                                         | string              |                                                  | null                     |
+| activeItemStyle       | An inline style object for the active breadcrumb list item                                                                                                                                                                                       | Object              |                                                  | null                     |
+| activeItemClassName   | Classes to be used for the active breadcrumb list item                                                                                                                                                                                           | string              |                                                  | null                     |
 
 ## License
 
@@ -126,7 +139,7 @@ MIT © [NiklasMencke](https://github.com/NiklasMencke)
 
 <a name="interfacesbreadcrumbmd"></a>
 
-[nextjs-breadcrumbs](#readmemd) / [Exports](#modulesmd) / Breadcrumb
+[iamgraeme-breadcrumbs](#readmemd) / [Exports](#modulesmd) / Breadcrumb
 
 ## Interface: Breadcrumb
 
@@ -145,7 +158,7 @@ MIT © [NiklasMencke](https://github.com/NiklasMencke)
 
 Breadcrumb title. Example: 'blog-entries'
 
-Defined in: [index.tsx:35](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L35)
+Defined in: [index.tsx:35](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L35)
 
 ---
 
@@ -155,11 +168,11 @@ Defined in: [index.tsx:35](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 The URL which the breadcrumb points to. Example: 'blog/blog-entries'
 
-Defined in: [index.tsx:38](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L38)
+Defined in: [index.tsx:38](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L38)
 
 <a name="interfacesbreadcrumbspropsmd"></a>
 
-[nextjs-breadcrumbs](#readmemd) / [Exports](#modulesmd) / BreadcrumbsProps
+[iamgraeme-breadcrumbs](#readmemd) / [Exports](#modulesmd) / BreadcrumbsProps
 
 ## Interface: BreadcrumbsProps
 
@@ -189,7 +202,7 @@ Defined in: [index.tsx:38](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Classes to be used for the active breadcrumb list item
 
-Defined in: [index.tsx:78](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L78)
+Defined in: [index.tsx:78](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L78)
 
 ---
 
@@ -199,7 +212,7 @@ Defined in: [index.tsx:78](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 An inline style object for the active breadcrumb list item
 
-Defined in: [index.tsx:75](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L75)
+Defined in: [index.tsx:75](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L75)
 
 ---
 
@@ -209,7 +222,7 @@ Defined in: [index.tsx:75](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Classes to be used for the outer container. Won't be used if useDefaultStyle is true
 
-Defined in: [index.tsx:60](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L60)
+Defined in: [index.tsx:60](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L60)
 
 ---
 
@@ -219,7 +232,7 @@ Defined in: [index.tsx:60](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 An inline style object for the outer container
 
-Defined in: [index.tsx:57](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L57)
+Defined in: [index.tsx:57](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L57)
 
 ---
 
@@ -229,7 +242,7 @@ Defined in: [index.tsx:57](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Classes to be used for the inactive breadcrumb list item
 
-Defined in: [index.tsx:72](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L72)
+Defined in: [index.tsx:72](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L72)
 
 ---
 
@@ -239,7 +252,7 @@ Defined in: [index.tsx:72](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 An inline style object for the inactive breadcrumb list item
 
-Defined in: [index.tsx:69](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L69)
+Defined in: [index.tsx:69](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L69)
 
 ---
 
@@ -249,7 +262,7 @@ Defined in: [index.tsx:69](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Boolean indicator if the labels should be displayed as uppercase. Example: true Default: false
 
-Defined in: [index.tsx:51](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L51)
+Defined in: [index.tsx:51](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L51)
 
 ---
 
@@ -259,7 +272,7 @@ Defined in: [index.tsx:51](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Classes to be used for the breadcrumb list
 
-Defined in: [index.tsx:66](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L66)
+Defined in: [index.tsx:66](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L66)
 
 ---
 
@@ -269,7 +282,7 @@ Defined in: [index.tsx:66](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 An inline style object for the breadcrumb list
 
-Defined in: [index.tsx:63](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L63)
+Defined in: [index.tsx:63](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L63)
 
 ---
 
@@ -279,7 +292,7 @@ Defined in: [index.tsx:63](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 The title for the very first breadcrumb pointing to the root directory. Example: '/' Default: 'HOME'
 
-Defined in: [index.tsx:48](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L48)
+Defined in: [index.tsx:48](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L48)
 
 ---
 
@@ -289,7 +302,7 @@ Defined in: [index.tsx:48](https://github.com/NiklasMencke/nextjs-breadcrumbs/bl
 
 Boolean indicator whether the root label should be ommitted. Example: true Default: false
 
-Defined in: [index.tsx:48](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L48)
+Defined in: [index.tsx:48](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L48)
 
 ---
 
@@ -311,7 +324,7 @@ A transformation function that allows to customize the label strings. Receives t
 
 **Returns:** _string_
 
-Defined in: [index.tsx:54](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L54)
+Defined in: [index.tsx:54](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L54)
 
 ---
 
@@ -323,13 +336,13 @@ If true, the default styles are used.
 Make sure to import the CSS in \_app.js
 Example: true Default: false
 
-Defined in: [index.tsx:45](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L45)
+Defined in: [index.tsx:45](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L45)
 
 <a name="modulesmd"></a>
 
-[nextjs-breadcrumbs](#readmemd) / Exports
+[iamgraeme-breadcrumbs](#readmemd) / Exports
 
-# nextjs-breadcrumbs
+# iamgraeme-breadcrumbs
 
 ## Table of contents
 
@@ -392,13 +405,13 @@ The breadcrumb React component.
 | :------------- | :-------------------------------------------------- |
 | `defaultProps` | [_BreadcrumbsProps_](#interfacesbreadcrumbspropsmd) |
 
-Defined in: [index.tsx:109](https://github.com/NiklasMencke/nextjs-breadcrumbs/blob/40dc4f0/src/index.tsx#L109)
+Defined in: [index.tsx:109](https://github.com/NiklasMencke/iamgraeme-breadcrumbs/blob/40dc4f0/src/index.tsx#L109)
 
 # Modules
 
 <a name="modulesdefaultmd"></a>
 
-[nextjs-breadcrumbs](#readmemd) / [Exports](#modulesmd) / default
+[iamgraeme-breadcrumbs](#readmemd) / [Exports](#modulesmd) / default
 
 ## Namespace: default
 
