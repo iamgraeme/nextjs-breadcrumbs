@@ -46,7 +46,9 @@ const convertBreadcrumb = (
   }
 
   // decode for utf-8 characters and return ascii.
-  return toUpperCase ? decodeURI(transformedTitle).toUpperCase() : decodeURI(transformedTitle);
+  return toUpperCase
+    ? decodeURI(transformedTitle).toUpperCase()
+    : decodeURI(transformedTitle);
 };
 
 export interface Breadcrumb {
@@ -187,6 +189,14 @@ const Breadcrumbs = ({
     }
   }, [router]);
 
+  const moveInArray = function (arr, from, to) {
+    // Delete the item from it's current position
+    var item = arr.splice(from, 1);
+
+    // Move the item to its new position
+    arr.splice(to, 0, item[0]);
+  };
+
   if (!breadcrumbs) {
     return null;
   }
@@ -215,17 +225,10 @@ const Breadcrumbs = ({
             </Link>
           </li>
         )}
-        {category && (
-          <li>
-            <Link>
-              <a>
-                {category}
-                </a>
-              </Link>
-          </li>
-        )}
+        {category && <li>{category}</li>}
         {breadcrumbs.length >= 1 &&
           breadcrumbs.map((breadcrumb, i) => {
+            moveInArray(breadcrumbs, 2, 1);
             if (
               !breadcrumb ||
               breadcrumb.breadcrumb.length === 0 ||
