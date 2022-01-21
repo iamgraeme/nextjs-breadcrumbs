@@ -185,17 +185,18 @@ const Breadcrumbs = ({
         };
       });
 
+      if (category) {
+        const categoryPath = {
+          breadcrumb: category,
+          href: '/blog',
+        };
+
+        pathArray.splice(1, 0, categoryPath);
+      }
+
       setBreadcrumbs(pathArray);
     }
   }, [router]);
-
-  // const moveInArray = function (arr: any, from: number, to: number) {
-  //   // Delete the item from it's current position
-  //   const item = arr.splice(from, 1);
-
-  //   // Move the item to its new position
-  //   arr.splice(to, 0, item[0]);
-  // };
 
   if (!breadcrumbs) {
     return null;
@@ -225,14 +226,8 @@ const Breadcrumbs = ({
             </Link>
           </li>
         )}
-        {category && (
-          <li>
-            <a>{category}</a>
-          </li>
-        )}
         {breadcrumbs.length >= 1 &&
           breadcrumbs.map((breadcrumb, i) => {
-            // moveInArray(breadcrumbs, 2, 1);
             if (
               !breadcrumb ||
               breadcrumb.breadcrumb.length === 0 ||
