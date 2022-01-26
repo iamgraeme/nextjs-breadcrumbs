@@ -57,6 +57,8 @@ export interface Breadcrumb {
 
   /** The URL which the breadcrumb points to. Example: 'blog/blog-entries' */
   href: string;
+
+  query?: string;
 }
 
 export interface CharacterMap {
@@ -188,7 +190,8 @@ const Breadcrumbs = ({
       if (category) {
         const categoryPath = {
           breadcrumb: category,
-          href: '/blog',
+          href: '/posts-by-category',
+          query: { category: category },
         };
 
         pathArray.splice(1, 0, categoryPath);
@@ -249,7 +252,14 @@ const Breadcrumbs = ({
                     : inactiveItemStyle
                 }
               >
-                <Link href={breadcrumb.href}>
+                <Link
+                  href={{
+                    pathname: breadcrumb.href,
+                    ...(breadcrumb.query && {
+                      query: breadcrumb.query,
+                    }),
+                  }}
+                >
                   <a>
                     {convertBreadcrumb(
                       breadcrumb.breadcrumb,
