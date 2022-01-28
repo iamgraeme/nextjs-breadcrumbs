@@ -153,7 +153,6 @@ const defaultProps: BreadcrumbsProps = {
  * @returns The breadcrumb React component.
  */
 const Breadcrumbs = ({
-  category,
   useDefaultStyle,
   rootLabel,
   omitRootLabel,
@@ -187,15 +186,15 @@ const Breadcrumbs = ({
         };
       });
 
-      if (category) {
-        const categoryPath = {
-          breadcrumb: category,
-          href: '/posts-by-category',
-          query: { category: category },
-        };
+      // if (category) {
+      //   const categoryPath = {
+      //     breadcrumb: category,
+      //     href: '/posts-by-category',
+      //     query: { category: category },
+      //   };
 
-        pathArray.splice(1, 0, categoryPath);
-      }
+      //   pathArray.splice(1, 0, categoryPath);
+      // }
 
       setBreadcrumbs(pathArray);
     }
@@ -252,14 +251,7 @@ const Breadcrumbs = ({
                     : inactiveItemStyle
                 }
               >
-                <Link
-                  href={{
-                    pathname: breadcrumb.href,
-                    ...(breadcrumb.query && {
-                      query: breadcrumb.query,
-                    }),
-                  }}
-                >
+                <Link href={breadcrumb.href}>
                   <a>
                     {convertBreadcrumb(
                       breadcrumb.breadcrumb,
