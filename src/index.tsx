@@ -180,6 +180,7 @@ const Breadcrumbs = ({
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
+        console.log(linkPath);
         return {
           breadcrumb: path,
           href: '/' + linkPath.slice(0, i + 1).join('/'),
